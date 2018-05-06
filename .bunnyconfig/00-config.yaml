@@ -1,28 +1,5 @@
 exec_once:
- files:
-  /etc/apache2/sites-enabled/prestashop.conf:
-    name: prestashop.conf
-    path: /etc/apache2/sites-enabled/
-    mode: "0644"
-    owner: root
-    group: root
-    content: |
-      <VirtualHost *:80>
-        DocumentRoot /var/www/html/prestashop
-        <Directory /var/www/html/prestashop>
-          AllowOverride All
-          Order Allow,Deny
-          Allow from All
-        </Directory>
-
-        CustomLog /var/log/apache2/access.log combined
-        ErrorLog /var/log/apache2/error.log
-      </VirtualHost>
  execs:
-  Remove default apache config file:
-   name: Remove default apache config file
-   command: |
-     rm -f /etc/apache2/sites-enabled/000-default.conf
   Run composer install:
    name: Run composer install
    command: |
